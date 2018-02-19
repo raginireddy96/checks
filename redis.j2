@@ -1,0 +1,10 @@
+{% for hosts in groups [ 'tag_Name_sensu_master' ] %}
+{
+"redis": 
+{
+             "host": "127.0.0.1",
+          "port": 6379
+            }
+           }
+{% endfor %}
+

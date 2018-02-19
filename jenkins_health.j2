@@ -1,0 +1,14 @@
+{% for hosts in groups [ 'tag_Name_sensu_master' ] %}
+{
+      "checks": {
+         "jenkins_health_check": {
+       "handlers": ["mailer"],
+       "command": "/opt/sensu/embedded/bin/check-jenkins.rb -s {{ master.instances[0].public_ip_address }} p 8080 -u /jenkins/metrics/currentUser/healthcheck",
+       "interval": 60,
+       "occurrences": 5,
+          "subscribers": [ "linux" ]
+       }
+         }
+}
+{% endfor %}
+

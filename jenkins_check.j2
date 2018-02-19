@@ -1,0 +1,14 @@
+{% for hosts in groups [ 'tag_Name_sensu_master' ] %}
+{
+      "checks": {
+         "jenkins_check": {
+       "handlers": ["mailer"],
+       "command": "/opt/sensu/embedded/bin/check-jenkins.rb -s localhost p 8080 -u /metrics/currentUser/ping -h true",
+       "interval": 60,
+       "occurrences": 5,
+          "subscribers": [ "linux" ]
+       }
+         }
+}
+{% endfor %}
+
